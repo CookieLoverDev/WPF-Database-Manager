@@ -1,0 +1,36 @@
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\Text Editor.exe
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\Text Editor.deps.json
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\Text Editor.runtimeconfig.json
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\Text Editor.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\Text Editor.pdb
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\EntityFramework.SqlServer.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\EntityFramework.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\System.Data.SQLite.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\System.Data.SQLite.EF6.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Victus\source\repos\Text Editor\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.csproj.AssemblyReference.cache
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor_MarkupCompile.cache
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor_MarkupCompile.lref
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.g.resources
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.AssemblyInfoInputs.cache
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.AssemblyInfo.cs
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.csproj.CoreCompileInputs.cache
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Edi.31734F8F.Up2Date
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.dll
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\refint\Text Editor.dll
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.pdb
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.genruntimeconfig.cache
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\ref\Text Editor.dll
