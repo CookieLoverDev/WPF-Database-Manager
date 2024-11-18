@@ -44,11 +44,17 @@ namespace Text_Editor
             _title = title.Text;
             _content = content.Text;
 
-            FileStream fileStream = new FileStream($"{_title}.txt", FileMode.Append, FileAccess.Write);
-            StreamWriter streamWriter = new StreamWriter(fileStream);
-            streamWriter.Write(_content);
-            streamWriter.Close();
-            fileStream.Close();
+            using (var connection = new SQLiteConnection(_connection))
+            {
+                connection.Open();
+                string query = $"INSERT INTO info (Title, Content) VALUES (@Title, @Content)";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Title", _title);
+                    command.Parameters.AddWithValue("@Content", _content);
+                    command.ExecuteNonQuery();
+                }
+            }
 
             MessageBox.Show("File is succesfully saved!");
             title.Clear();
