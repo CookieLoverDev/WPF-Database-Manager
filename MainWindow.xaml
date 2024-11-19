@@ -31,7 +31,7 @@
         </StackPanel>
         <StackPanel Width="500" Height="450" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontSize="18" FontWeight="Bold" Text="Description" />
-            <TextBox x:Name="description" Width="475" Height="300"></TextBox>
+            <TextBox x:Name="description" Width="475" Height="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
             <Button Width="150" BorderThickness="2" Margin="30" Content="Save" FontWeight="Bold" FontSize="18" Click="Button_Click" />
         </StackPanel>
     </Grid>
