@@ -8,19 +8,31 @@
         Title="MainWindow" Height="550" Width="800">
     <Grid>
         <StackPanel Width="300" Height="350" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Name" />
-            <TextBox x:Name="fname" Width="230"></TextBox>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Surname" />
-            <TextBox x:Name="surname" Width="230"></TextBox>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Email" />
-            <TextBox x:Name="email" Width="230"></TextBox>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Role" />
-            <TextBox x:Name="role" Width="230"></TextBox>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Name" />
+                <TextBox Grid.Row="1" x:Name="fname" Width="230" Height="20" />
+                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Surname" />
+                <TextBox Grid.Row="3" x:Name="surname" Width="230" Height="20" />
+                <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Email" />
+                <TextBox Grid.Row="5" x:Name="email" Width="230" Height="20" />
+                <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Role" />
+                <TextBox Grid.Row="7" x:Name="role" Width="230" Height="20" />
+            </Grid>
         </StackPanel>
         <StackPanel Width="500" Height="450" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Description" />
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontSize="18" FontWeight="Bold" Text="Description" />
             <TextBox x:Name="description" Width="475" Height="300"></TextBox>
-            <Button Height="30" Width="150" Content="Save" FontWeight="Bold" FontSize="18" Click="Button_Click" />
+            <Button Width="150" BorderThickness="2" Margin="30" Content="Save" FontWeight="Bold" FontSize="18" Click="Button_Click" />
         </StackPanel>
     </Grid>
 </Window>
