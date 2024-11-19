@@ -29,10 +29,14 @@
                 <TextBox Grid.Row="7" x:Name="role" Width="230" Height="20" />
             </Grid>
         </StackPanel>
-        <StackPanel Width="500" Height="450" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <StackPanel Width="500" Height="370" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontSize="18" FontWeight="Bold" Text="Description" />
             <TextBox x:Name="description" Width="475" Height="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
-            <Button Width="150" BorderThickness="2" Margin="30" Content="Save" FontWeight="Bold" FontSize="18" Click="Button_Click" />
+        </StackPanel>
+        <StackPanel Width="500" Height="150" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Width="100" Height="35" BorderThickness="2" Margin="35" Content="Save" FontWeight="Bold" FontSize="18" Click="SaveEntry" />
+            <Button Width="100" Height="35" BorderThickness="2" Margin="35" Content="View" FontWeight="Bold" FontSize="18" Click="CheckLastTen" />
+            <Button Width="100" Height="35" BorderThickness="2" Margin="20" Content="Search" FontWeight="Bold" FontSize="18" Click="Search" />
         </StackPanel>
     </Grid>
 </Window>

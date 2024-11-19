@@ -42,7 +42,7 @@ namespace Text_Editor
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SaveEntry(object sender, RoutedEventArgs e)
         {
             _name = fname.Text;
             _surname = surname.Text;
@@ -85,6 +85,16 @@ namespace Text_Editor
             {
                 MessageBox.Show($"Entries were not saved in the database! Following error has occured {ex}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void CheckLastTen(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void InitializeDatabase()
