@@ -27,8 +27,11 @@ namespace Text_Editor
         private const String _dbName = "mainDB.db";
         private const String _connection = $"Data Source={_dbName};Version=3;";
 
-        private string _title;
-        private string _content;
+        private string _name;
+        private string _surname;
+        private string _email;
+        private string _role;
+        private string _description;
 
         public MainWindow()
         {
@@ -41,29 +44,37 @@ namespace Text_Editor
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _title = title.Text;
-            _content = content.Text;
+            _name = fname.Text;
+            _surname = surname.Text;
+            _email = email.Text;
+            _role = role.Text;
+            _description = description.Text;
 
             using (var connection = new SQLiteConnection(_connection))
             {
                 connection.Open();
-                string query = $"INSERT INTO info (Title, Content) VALUES (@Title, @Content)";
+                string query = $"INSERT INTO info (Name, Surname, Email, Role, Description) VALUES (@Name, @Surname, @Email, @Role, @Description)";
                 using (var command = new SQLiteCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Title", _title);
-                    command.Parameters.AddWithValue("@Content", _content);
+                    command.Parameters.AddWithValue("@Name", _name);
+                    command.Parameters.AddWithValue("@Surname", _surname);
+                    command.Parameters.AddWithValue("@Email", _email);
+                    command.Parameters.AddWithValue("@Role", _role);
+                    command.Parameters.AddWithValue("@Description", _description);
                     command.ExecuteNonQuery();
                 }
             }
 
             MessageBox.Show("File is succesfully saved!");
-            title.Clear();
-            content.Clear();
+            fname.Clear();
+            surname.Clear();
+            email.Clear();
+            role.Clear();
+            description.Clear();
         }
 
         private void InitializeDatabase()
         {
-            Console.WriteLine("I was executed");
             SQLiteConnection.CreateFile(_dbName);
             using (var connection = new SQLiteConnection(_connection))
             {
@@ -71,8 +82,11 @@ namespace Text_Editor
                 var query = @"
                     Create TABLE info (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Title TEXT NOT NULL,
-                    Content TEXT NOT NULL,
+                    Name TEXT NOT NULL,
+                    Surname TEXT NOT NULL,
+                    Email TEXT NOT NULL,
+                    Role TEXT NOT NULL,
+                    Description TEXT NOT NULL,
                     Creation_Date DATETIME DEFAULT CURRENT_TIMESTAMP
                 );";
                 

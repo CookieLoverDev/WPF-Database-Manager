@@ -5,13 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_Editor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="800">
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
-        <StackPanel Width="500" Height="320" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="Hi" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Title" />
-            <TextBox x:Name="title" Width="200"></TextBox>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Content" />
-            <TextBox x:Name="content" Width="300" Height="200"></TextBox>
+        <StackPanel Width="300" Height="350" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Name" />
+            <TextBox x:Name="fname" Width="230"></TextBox>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Surname" />
+            <TextBox x:Name="surname" Width="230"></TextBox>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Email" />
+            <TextBox x:Name="email" Width="230"></TextBox>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Role" />
+            <TextBox x:Name="role" Width="230"></TextBox>
+        </StackPanel>
+        <StackPanel Width="500" Height="450" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Description" />
+            <TextBox x:Name="description" Width="475" Height="300"></TextBox>
             <Button Height="30" Width="150" Content="Save" FontWeight="Bold" FontSize="18" Click="Button_Click" />
         </StackPanel>
     </Grid>
