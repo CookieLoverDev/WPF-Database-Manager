@@ -89,7 +89,9 @@ namespace Text_Editor
 
         private void CheckLastTen(object sender, RoutedEventArgs e)
         {
-
+            ViewWindow viewWindow = new ViewWindow();
+            viewWindow.Show();
+            this.Close();
         }
 
         private void Search(object sender, RoutedEventArgs e)

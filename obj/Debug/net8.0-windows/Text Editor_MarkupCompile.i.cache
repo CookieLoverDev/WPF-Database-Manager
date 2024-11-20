@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Victus\source\repos\Text Editor\App.xaml
-11407045341
+2-601623585
 
-61107768239
+72004292062
 203328374069
-MainWindow.xaml;
+MainWindow.xaml;ViewWindow.xaml;
 
-False
+True
 
