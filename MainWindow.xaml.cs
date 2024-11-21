@@ -24,8 +24,8 @@ namespace Text_Editor
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const String _dbName = "mainDB.db";
-        private const String _connection = $"Data Source={_dbName};Version=3;";
+        private const string _dbName = "mainDB.db";
+        private const string _connectionString = $"Data Source={_dbName};Version=3;";
 
         private string _name;
         private string _surname;
@@ -59,7 +59,7 @@ namespace Text_Editor
 
             try
             {
-                using (var connection = new SQLiteConnection(_connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
                     connection.Open();
                     string query = $"INSERT INTO info (Name, Surname, Email, Role, Description) VALUES (@Name, @Surname, @Email, @Role, @Description)";
@@ -102,7 +102,7 @@ namespace Text_Editor
         private void InitializeDatabase()
         {
             SQLiteConnection.CreateFile(_dbName);
-            using (var connection = new SQLiteConnection(_connection))
+            using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
                 var query = @"

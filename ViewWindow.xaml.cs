@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Sql;
 
 namespace Text_Editor
 {
@@ -19,6 +20,12 @@ namespace Text_Editor
     /// </summary>
     public partial class ViewWindow : Window
     {
+        private int _currentID = 0;
+        private int _maximumID;
+
+        private const string _dbName = "mainDB.db";
+        private const string _connectionString = $"Data Source={_dbName};Version=3;";
+
         public ViewWindow()
         {
             InitializeComponent();
@@ -31,7 +38,12 @@ namespace Text_Editor
             this.Close();
         }
 
-        private void NextPerson(object sender, EventArgs e)
+        private void NextPersonBtn(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChangeThePerson()
         {
 
         }
