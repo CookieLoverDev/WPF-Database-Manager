@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace Text_Editor
 {
@@ -22,6 +24,12 @@ namespace Text_Editor
     {
         private int _currentID = 0;
         private int _maximumID;
+
+        private string _name;
+        private string _surname;
+        private string _email;
+        private string _role;
+        private string _description;
 
         private const string _dbName = "mainDB.db";
         private const string _connectionString = $"Data Source={_dbName};Version=3;";
@@ -40,12 +48,38 @@ namespace Text_Editor
 
         private void NextPersonBtn(object sender, EventArgs e)
         {
+            _currentID++;
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT Name, Surname, Email, Role, Description FROM info WHERE Id=@Id";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", _currentID);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            _name = reader.GetString(0);
+                            _surname = reader.GetString(1);
+                            _email = reader.GetString(2);
+                            _role = reader.GetString(3);
+                            _description = reader.GetString(4);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thats all folks", "Out of bound error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
 
-        }
-
-        private void ChangeThePerson()
-        {
-
+            idBox.Text = _currentID.ToString();
+            nameBox.Text = _name;
+            surnameBox.Text = _surname;
+            emailBox.Text = _email;
+            roleBox.Text = _role;
+            descriptionBox.Text = _description;
         }
     }
 }
