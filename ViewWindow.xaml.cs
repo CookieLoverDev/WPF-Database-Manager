@@ -69,6 +69,44 @@ namespace Text_Editor
                         else
                         {
                             MessageBox.Show("Thats all folks", "Out of bound error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            _currentID--;
+                        }
+                    }
+                }
+            }
+
+            idBox.Text = _currentID.ToString();
+            nameBox.Text = _name;
+            surnameBox.Text = _surname;
+            emailBox.Text = _email;
+            roleBox.Text = _role;
+            descriptionBox.Text = _description;
+        }
+
+        private void PreviousPerson(object sender, EventArgs e)
+        {
+            _currentID--;
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT Name, Surname, Email, Role, Description FROM info WHERE Id=@Id";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", _currentID);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            _name = reader.GetString(0);
+                            _surname = reader.GetString(1);
+                            _email = reader.GetString(2);
+                            _role = reader.GetString(3);
+                            _description = reader.GetString(4);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thats all folks", "Out of bound error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            _currentID = 0;
                         }
                     }
                 }
