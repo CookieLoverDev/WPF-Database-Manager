@@ -10,7 +10,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Media\keke.jpg" />
+    <None Remove="Media\people1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Media\keke.jpg" />
+    <Resource Include="Media\people1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SearchWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
 </Project>

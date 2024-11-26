@@ -35,8 +35,8 @@
         </StackPanel>
         <StackPanel Width="500" Height="150" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Button Width="100" Height="35" BorderThickness="2" Margin="35" Content="Save" FontWeight="Bold" FontSize="18" Click="SaveEntry" Cursor="Hand" />
-            <Button Width="100" Height="35" BorderThickness="2" Margin="25" Content="View" FontWeight="Bold" FontSize="18" Click="CheckLastTen" Cursor="Hand" />
-            <Button Width="100" Height="35" BorderThickness="2" Margin="25" Content="Search" FontWeight="Bold" FontSize="18" Click="Search" Cursor="Hand" />
+            <Button Width="100" Height="35" BorderThickness="2" Margin="25" Content="View" FontWeight="Bold" FontSize="18" Click="ViewWindowOpen" Cursor="Hand" />
+            <Button Width="100" Height="35" BorderThickness="2" Margin="25" Content="Search" FontWeight="Bold" FontSize="18" Click="SearchWindowOpen" Cursor="Hand" />
         </StackPanel>
     </Grid>
 </Window>

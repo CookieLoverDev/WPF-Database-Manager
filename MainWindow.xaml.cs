@@ -87,16 +87,18 @@ namespace Text_Editor
             }
         }
 
-        private void CheckLastTen(object sender, RoutedEventArgs e)
+        private void ViewWindowOpen(object sender, RoutedEventArgs e)
         {
             ViewWindow viewWindow = new ViewWindow();
             viewWindow.Show();
             this.Close();
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+        private void SearchWindowOpen(object sender, RoutedEventArgs e)
         {
-
+            SearchWindow searchWindow = new SearchWindow();
+            searchWindow.Show();
+            this.Close();
         }
 
         private void InitializeDatabase()

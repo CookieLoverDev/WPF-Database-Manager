@@ -37,3 +37,5 @@ C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\ref\Text Edito
 C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\Text Editor.sourcelink.json
 C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\ViewWindow.g.cs
 C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\ViewWindow.baml
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\SearchWindow.g.cs
+C:\Users\Victus\source\repos\Text Editor\obj\Debug\net8.0-windows\SearchWindow.baml
