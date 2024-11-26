@@ -37,6 +37,7 @@ namespace Text_Editor
         public ViewWindow()
         {
             InitializeComponent();
+            InitialProcess();
         }
 
         private void ExitToMain(object sender, EventArgs e)
@@ -118,6 +119,69 @@ namespace Text_Editor
             emailBox.Text = _email;
             roleBox.Text = _role;
             descriptionBox.Text = _description;
+        }
+
+        private void EditPerson(object sender, EventArgs e)
+        {
+            NextBtn.IsEnabled = false;
+            BackBtn.IsEnabled = false;
+            ExitBtn.IsEnabled = false;
+            EditBtn.IsEnabled = false;
+            SaveBtn.IsEnabled = true;
+
+            idBox.IsEnabled = true;
+            nameBox.IsEnabled = true;
+            surnameBox.IsEnabled = true;
+            emailBox.IsEnabled = true;
+            roleBox.IsEnabled = true;
+            descriptionBox.IsEnabled = true;
+
+            MessageBox.Show("You entered the Edit mode. To finish or to exit it, please press the 'Save' button!", "Inofrmation", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void SaveEdit(object sender, EventArgs e)
+        {
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE info SET Name = @Name, Surname = @Surname, Email = @Email, Role = @Role, Description = @Description WHERE Id = @Id";
+                try
+                {
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", nameBox.Text);
+                        command.Parameters.AddWithValue("@Surname", surnameBox.Text);
+                        command.Parameters.AddWithValue("@Email", emailBox.Text);
+                        command.Parameters.AddWithValue("@Role", roleBox.Text);
+                        command.Parameters.AddWithValue("@Description", descriptionBox.Text);
+                        command.Parameters.AddWithValue("@Id", _currentID);
+
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Information succesfully updated!", "Great Success!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"There was a problem updating information. Problem occured {ex}", "Not so great success", MessageBoxButton.OK , MessageBoxImage.Error);
+                }
+            }
+
+            NextBtn.IsEnabled = true;
+            BackBtn.IsEnabled = true;
+            ExitBtn.IsEnabled = true;
+            EditBtn.IsEnabled = true;
+            InitialProcess();
+        }
+
+        private void InitialProcess()
+        {
+            SaveBtn.IsEnabled = false;
+            idBox.IsEnabled = false;
+            nameBox.IsEnabled = false;
+            surnameBox.IsEnabled = false;
+            emailBox.IsEnabled = false;
+            roleBox.IsEnabled = false;
+            descriptionBox.IsEnabled = false;
         }
     }
 }

@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_Editor"
         mc:Ignorable="d"
-        Title="View Window" Height="350" Width="910">
+        Title="View Window" Height="430" Width="910">
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="230" />
-            <RowDefinition Height="120" />
+            <RowDefinition Height="200" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -25,22 +25,22 @@
                 <RowDefinition Height="170" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="ID" />
-            <TextBox x:Name="idBox" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" IsReadOnly="True" />
+            <TextBox x:Name="idBox" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" />
             
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Name" />
-            <TextBox x:Name="nameBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" IsReadOnly="True" />
+            <TextBox x:Name="nameBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" />
             
             <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Surname" />
-            <TextBox x:Name="surnameBox" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" IsReadOnly="True" />
+            <TextBox x:Name="surnameBox" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" />
             
             <TextBlock Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Email" />
-            <TextBox x:Name="emailBox" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="115" FontWeight="Bold" IsReadOnly="True" />
+            <TextBox x:Name="emailBox" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="115" FontWeight="Bold" />
             
             <TextBlock Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Role" />
-            <TextBox x:Name="roleBox" Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" IsReadOnly="True" />
+            <TextBox x:Name="roleBox" Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Center" Height="25" Width="110" FontWeight="Bold" />
 
             <TextBlock Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Description" />
-            <TextBox x:Name="descriptionBox" Grid.Row="1" Grid.Column="5" VerticalAlignment="Top" HorizontalAlignment="Center" Height="170" Width="295" FontWeight="Bold" IsReadOnly="True" />
+            <TextBox x:Name="descriptionBox" Grid.Row="1" Grid.Column="5" VerticalAlignment="Top" HorizontalAlignment="Center" Height="170" Width="295" FontWeight="Bold" />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -51,11 +51,14 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
             </Grid.RowDefinitions>
 
-            <Button Height="40" Width="150" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20" FontWeight="Bold" FontSize="22" Content="&lt;- Exit" Cursor="Hand" Click="ExitToMain" />
-            <Button Height="40" Width="150" Grid.Column="1" HorizontalAlignment="Right" Margin="10" FontWeight="Bold" FontSize="22" Content="&lt;- Back" Cursor="Hand" Click="PreviousPerson" />
-            <Button Height="40" Width="150" Grid.Column="2" HorizontalAlignment="Left" Margin="10" FontWeight="Bold" FontSize="22" Content="Next ->" Cursor="Hand" Click="NextPersonBtn" />
+            <Button x:Name="ExitBtn" Height="40" Width="150" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20" FontWeight="Bold" FontSize="22" Content="&lt;- Exit" Cursor="Hand" Click="ExitToMain" />
+            <Button x:Name="BackBtn" Height="40" Width="150" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="10" FontWeight="Bold" FontSize="22" Content="&lt;- Back" Cursor="Hand" Click="PreviousPerson" />
+            <Button x:Name="NextBtn" Height="40" Width="150" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10" FontWeight="Bold" FontSize="22" Content="Next ->" Cursor="Hand" Click="NextPersonBtn" />
+            <Button x:Name="EditBtn" Height="40" Width="150" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="10" FontWeight="Bold" FontSize="22" Content="Edit" Cursor="Hand" Click="EditPerson" />
+            <Button x:Name="SaveBtn" Height="40" Width="150" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="10" FontWeight="Bold" FontSize="22" Content="Save" Cursor="Hand" Click="SaveEdit" />
         </Grid>
     </Grid>
 </Window>
