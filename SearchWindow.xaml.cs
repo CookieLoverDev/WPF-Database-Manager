@@ -59,10 +59,38 @@ namespace Text_Editor
 
         private void DeletePerson(object sender, RoutedEventArgs e)
         {
+            if (idBox.Text == string.Empty)
+            {
+                MessageBox.Show("To delete someone, you gotta search for someone first!", "Ты идиот?", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this person?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "DELETE FROM info WHERE Id = @Id";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Id", idBox.Text);
+                        command.ExecuteNonQuery();
+
+                        idBox.Text = string.Empty;
+                        nameBox.Text = string.Empty;
+                        surnameBox.Text = string.Empty;
+                        emailBox.Text = string.Empty;
+                        roleBox.Text = string.Empty;
+                        descriptionBox.Text = string.Empty;
+                    }
+                }
+            }
+            else
+                return
         }
 
-        private void Exit(object sender, ExecutedRoutedEventArgs e)
+        private void GoToMain(object sender, EventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
