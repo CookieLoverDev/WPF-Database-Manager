@@ -101,6 +101,25 @@ namespace Text_Editor
             this.Close();
         }
 
+        private void ClearDatabase(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to clear the database? All the data will be erased!", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "DELETE FROM info";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            else
+                return;
+        }
+
         private void InitializeDatabase()
         {
             SQLiteConnection.CreateFile(_dbName);

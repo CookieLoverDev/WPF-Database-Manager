@@ -87,7 +87,7 @@ namespace Text_Editor
                 }
             }
             else
-                return
+                return;
         }
 
         private void GoToMain(object sender, EventArgs e)

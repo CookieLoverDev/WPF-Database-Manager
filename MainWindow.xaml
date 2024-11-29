@@ -5,9 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_Editor"
         mc:Ignorable="d"
-        Title="Entry Window" Height="550" Width="800">
-    <Grid Background="LightGray">
-        <StackPanel Width="300" Height="350" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+        Title="Entry Window" Height="650" Width="900">
+    <Grid>
+        <DockPanel>
+            <Menu FontWeight="Medium" DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New Database">
+                        <MenuItem.Icon>
+                            <Image Source="/Media/plus-symbol-button.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Connect Existing Database">
+                        <MenuItem.Icon>
+                            <Image Source="/Media/open-folder.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Clear Current Database" Click="ClearDatabase">
+                        <MenuItem.Icon>
+                            <Image Source="/Media/clean.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="_Export Database" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <StackPanel Width="300" Height="425" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="37.5" />
@@ -18,20 +42,24 @@
                     <RowDefinition Height="37.5" />
                     <RowDefinition Height="37.5" />
                     <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
+                    <RowDefinition Height="37.5" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Name" />
-                <TextBox Grid.Row="1" x:Name="fname" Width="230" Height="20" />
-                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Surname" />
-                <TextBox Grid.Row="3" x:Name="surname" Width="230" Height="20" />
-                <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Email" />
-                <TextBox Grid.Row="5" x:Name="email" Width="230" Height="20" />
-                <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Role" />
-                <TextBox Grid.Row="7" x:Name="role" Width="230" Height="20" />
+                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Person ID" />
+                <TextBox Grid.Row="1" x:Name="idBox" Width="230" Height="20" />
+                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Name" />
+                <TextBox Grid.Row="3" x:Name="fname" Width="230" Height="20" />
+                <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Surname" />
+                <TextBox Grid.Row="5" x:Name="surname" Width="230" Height="20" />
+                <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Email" />
+                <TextBox Grid.Row="7" x:Name="email" Width="230" Height="20" />
+                <TextBlock Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Role" />
+                <TextBox Grid.Row="9" x:Name="role" Width="230" Height="20" />
             </Grid>
         </StackPanel>
-        <StackPanel Width="500" Height="370" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <StackPanel Width="500" Height="500" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" FontSize="18" FontWeight="Bold" Text="Description" />
-            <TextBox x:Name="description" Width="475" Height="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
+            <TextBox x:Name="description" Width="475" Height="350" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
         </StackPanel>
         <StackPanel Width="500" Height="150" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Button Width="100" Height="35" BorderThickness="2" Margin="35" Content="Save" FontWeight="Bold" FontSize="18" Click="SaveEntry" Cursor="Hand" />

@@ -10,8 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Media\clean.png" />
     <None Remove="Media\keke.jpg" />
+    <None Remove="Media\open-folder.png" />
     <None Remove="Media\people1.png" />
+    <None Remove="Media\plus-symbol-button.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,8 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Media\clean.png" />
     <Resource Include="Media\keke.jpg" />
+    <Resource Include="Media\open-folder.png" />
     <Resource Include="Media\people1.png" />
+    <Resource Include="Media\plus-symbol-button.png" />
   </ItemGroup>
 
   <ItemGroup>
