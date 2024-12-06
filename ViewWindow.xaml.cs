@@ -31,7 +31,7 @@ namespace Text_Editor
 
         private int _pageSize = 100;
         private int _currentPage = 1;
-        private int _currentID;
+        private int _currentID = -1;
         private int _totalPages;
         private List<int> _currentRecords = new List<int>();
 
@@ -42,6 +42,8 @@ namespace Text_Editor
         {
             InitializeComponent();
             InitialProcess();
+            _totalPages = CalculateTotalPages();
+            UpdatePage();
         }
 
         private void ExitToMain(object sender, EventArgs e)
@@ -54,45 +56,37 @@ namespace Text_Editor
         private void NextPersonBtn(object sender, EventArgs e)
         {
             _currentID++;
-            
+            int id = _currentRecords[_currentID];
+            if (_currentID < _currentRecords.Count - 1)
+                LoadPerson(id);
+            else if (_currentID >= _currentRecords.Count)
+            {
+                _currentPage++;
+                UpdatePage();
+
+                _currentID = 0;
+                id = _currentRecords[_currentID];
+                LoadPerson(id);
+            }
         }
 
         private void PreviousPerson(object sender, EventArgs e)
         {
             _currentID--;
-            using (var connection = new SQLiteConnection(_connectionString))
+            int id = _currentRecords[_currentID];
+            if (_currentID >= 0)
             {
-                connection.Open();
-                string query = $"SELECT PersonID, Name, Surname, Email, Role, Description FROM info WHERE Id=@Id";
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Id", _currentID);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            _personID = reader.GetString(0);
-                            _name = reader.GetString(1);
-                            _surname = reader.GetString(2);
-                            _email = reader.GetString(3);
-                            _role = reader.GetString(4);
-                            _description = reader.GetString(5);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thats all folks", "Out of bound error", MessageBoxButton.OK, MessageBoxImage.Error);
-                            _currentID--;
-                        }
-                    }
-                }
+                LoadPerson(id);
             }
+            else if (_currentID < 0)
+            {
+                _currentPage--;
+                UpdatePage();
 
-            idBox.Text = _personID;
-            nameBox.Text = _name;
-            surnameBox.Text = _surname;
-            emailBox.Text = _email;
-            roleBox.Text = _role;
-            descriptionBox.Text = _description;
+                _currentID = _currentRecords.Count - 1;
+                id = _currentRecords[_currentID];
+                LoadPerson(id);
+            }
         }
 
         private void EditPerson(object sender, EventArgs e)
@@ -151,19 +145,28 @@ namespace Text_Editor
         private void UpdatePage()
         {
             _currentRecords.Clear();
-            using (var connection = new SQLiteConnection(_connectionString))
+            if (_currentPage > _totalPages || _currentPage <= 0)
             {
-                connection.Open();
-                string query = "SELECT Id FROM info ORDER BY Id LIMIT @PageSize OFFSETT @Offsett";
-                using (var command = new SQLiteCommand(query, connection))
+                MessageBox.Show("That was all records!", "Out of bound", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            else
+            {
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    command.Parameters.AddWithValue("@PageSize", _pageSize);
-                    command.Parameters.AddWithValue("@Offsett", CalculateOffsett());
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    int offset = CalculateOffsett();
+                    string query = "SELECT Id FROM info ORDER BY Id LIMIT @PageSize OFFSET @Offsett";
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        while (reader.Read())
+                        command.Parameters.AddWithValue("@PageSize", _pageSize);
+                        command.Parameters.AddWithValue("@Offsett", offset);
+                        using (var reader = command.ExecuteReader())
                         {
-                            _currentRecords.Add(reader.GetInt32(0));
+                            while (reader.Read())
+                            {
+                                _currentRecords.Add(reader.GetInt32(0));
+                            }
                         }
                     }
                 }
@@ -208,18 +211,20 @@ namespace Text_Editor
             return offsett;
         }
 
-        private void CalculateTotalPages()
+        private int CalculateTotalPages()
         {
+            int _totalRecords = 0;
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM info";
                 using (var command = new SQLiteCommand(query, connection))
                 {
-                    int _totalRecords = Convert.ToInt32(command.ExecuteScalar());
-                    _totalPages = (int)Math.Ceiling((double)_totalRecords / _pageSize);
+                    _totalRecords = Convert.ToInt32(command.ExecuteScalar());
                 }
             }
+
+            return (int)Math.Ceiling((double)_totalRecords / _pageSize);
         }
 
         private void InitialProcess()
