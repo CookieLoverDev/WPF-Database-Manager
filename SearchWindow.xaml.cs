@@ -33,7 +33,7 @@ namespace Text_Editor
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = "SELECT Name, Surname, Email, Role, Description FROM info WHERE Id = @Id";
+                string query = "SELECT Name, Surname, Email, Role, Description FROM info WHERE PersonID = @Id";
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", searchBox.Text);
@@ -77,12 +77,13 @@ namespace Text_Editor
                         command.Parameters.AddWithValue("@Id", idBox.Text);
                         command.ExecuteNonQuery();
 
-                        idBox.Text = string.Empty;
-                        nameBox.Text = string.Empty;
-                        surnameBox.Text = string.Empty;
-                        emailBox.Text = string.Empty;
-                        roleBox.Text = string.Empty;
-                        descriptionBox.Text = string.Empty;
+                        searchBox.Clear();
+                        idBox.Clear();
+                        nameBox.Clear();
+                        surnameBox.Clear();
+                        emailBox.Clear();
+                        roleBox.Clear();
+                        descriptionBox.Clear();
                     }
                 }
             }

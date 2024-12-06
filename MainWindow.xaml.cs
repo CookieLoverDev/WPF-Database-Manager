@@ -27,6 +27,7 @@ namespace Text_Editor
         private const string _dbName = "mainDB.db";
         private const string _connectionString = $"Data Source={_dbName};Version=3;";
 
+        private string _id;
         private string _name;
         private string _surname;
         private string _email;
@@ -44,6 +45,7 @@ namespace Text_Editor
 
         private void SaveEntry(object sender, RoutedEventArgs e)
         {
+            _id = idBox.Text;
             _name = fname.Text;
             _surname = surname.Text;
             _email = email.Text;
@@ -62,9 +64,10 @@ namespace Text_Editor
                 using (var connection = new SQLiteConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = $"INSERT INTO info (Name, Surname, Email, Role, Description) VALUES (@Name, @Surname, @Email, @Role, @Description)";
+                    string query = $"INSERT INTO info (PersonID, Name, Surname, Email, Role, Description) VALUES (@PersonID, @Name, @Surname, @Email, @Role, @Description)";
                     using (var command = new SQLiteCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@PersonID", _id);
                         command.Parameters.AddWithValue("@Name", _name);
                         command.Parameters.AddWithValue("@Surname", _surname);
                         command.Parameters.AddWithValue("@Email", _email);
@@ -75,6 +78,7 @@ namespace Text_Editor
                 }
 
                 MessageBox.Show("File is succesfully saved!");
+                idBox.Clear();
                 fname.Clear();
                 surname.Clear();
                 email.Clear();
@@ -129,12 +133,12 @@ namespace Text_Editor
                 var query = @"
                     Create TABLE info (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    PersonID TEXT NOT NULL,
                     Name TEXT NOT NULL,
                     Surname TEXT NOT NULL,
                     Email TEXT NOT NULL,
                     Role TEXT NOT NULL,
-                    Description TEXT NOT NULL,
-                    Creation_Date DATETIME DEFAULT CURRENT_TIMESTAMP
+                    Description TEXT NOT NULL
                 );";
                 
                 using (var command = new SQLiteCommand(query, connection))
