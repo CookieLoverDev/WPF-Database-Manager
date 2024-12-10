@@ -29,7 +29,7 @@ namespace Text_Editor
         private string _role;
         private string _description;
 
-        private int _pageSize = 100;
+        private int _pageSize = 10;
         private int _currentPage = 1;
         private int _currentID = -1;
         private int _totalPages;
@@ -56,16 +56,18 @@ namespace Text_Editor
         private void NextPersonBtn(object sender, EventArgs e)
         {
             _currentID++;
-            int id = _currentRecords[_currentID];
-            if (_currentID < _currentRecords.Count - 1)
+            if (_currentID < _currentRecords.Count)
+            {
+                int id = _currentRecords[_currentID];
                 LoadPerson(id);
+            }
             else if (_currentID >= _currentRecords.Count)
             {
                 _currentPage++;
                 UpdatePage();
 
                 _currentID = 0;
-                id = _currentRecords[_currentID];
+                int id = _currentRecords[_currentID];
                 LoadPerson(id);
             }
         }
@@ -73,9 +75,9 @@ namespace Text_Editor
         private void PreviousPerson(object sender, EventArgs e)
         {
             _currentID--;
-            int id = _currentRecords[_currentID];
             if (_currentID >= 0)
             {
+                int id = _currentRecords[_currentID];
                 LoadPerson(id);
             }
             else if (_currentID < 0)
@@ -84,7 +86,7 @@ namespace Text_Editor
                 UpdatePage();
 
                 _currentID = _currentRecords.Count - 1;
-                id = _currentRecords[_currentID];
+                int id = _currentRecords[_currentID];
                 LoadPerson(id);
             }
         }
