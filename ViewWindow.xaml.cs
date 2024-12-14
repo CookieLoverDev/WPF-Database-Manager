@@ -111,6 +111,19 @@ namespace Text_Editor
 
         private void SaveEdit(object sender, EventArgs e)
         {
+            string id = idBox.Text;
+            string name = nameBox.Text;
+            string surname = surnameBox.Text;
+            string email = emailBox.Text;
+            string role = roleBox.Text;
+            string description = descriptionBox.Text;
+
+            if (new[] { id, name, surname, email, role, description }.Any(string.IsNullOrEmpty))
+            {
+                MessageBox.Show("Please, fill out every form", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
@@ -119,12 +132,12 @@ namespace Text_Editor
                 {
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@PersonID", idBox.Text);
-                        command.Parameters.AddWithValue("@Name", nameBox.Text);
-                        command.Parameters.AddWithValue("@Surname", surnameBox.Text);
-                        command.Parameters.AddWithValue("@Email", emailBox.Text);
-                        command.Parameters.AddWithValue("@Role", roleBox.Text);
-                        command.Parameters.AddWithValue("@Description", descriptionBox.Text);
+                        command.Parameters.AddWithValue("@PersonID", id);
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Surname", surname);
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@Role", role);
+                        command.Parameters.AddWithValue("@Description", description);
                         command.Parameters.AddWithValue("@Id", _currentID);
 
                         command.ExecuteNonQuery();

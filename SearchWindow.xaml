@@ -61,11 +61,19 @@
 
         </Grid>
         <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="455" />
-                <ColumnDefinition Width="455" />
+                <ColumnDefinition Width="275" />
+                <ColumnDefinition Width="180" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="BackBtn" Height="40" Width="150" Grid.Column="1" HorizontalAlignment="Right" Margin="10" FontWeight="Bold" FontSize="22" Content="Delete" Cursor="Hand" Click="DeletePerson" />
+            <Button x:Name="DeleteBtn" Height="40" Width="150" Grid.Column="2" HorizontalAlignment="Left" Margin="10" FontWeight="Bold" FontSize="22" Content="Delete" Cursor="Hand" Click="DeletePerson" />
+            <Button x:Name="EditBtn" Height="40" Width="150" Grid.Column="1" HorizontalAlignment="Right" Margin="10" FontWeight="Bold" FontSize="22" Content="Edit" Cursor="Hand" Click="EditPerson" />
+            <Button x:Name="SaveBtn" Height="40" Width="150" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="10" FontWeight="Bold" FontSize="22" Content="Save" Cursor="Hand" Click="SavePerson" />
             <Button x:Name="ExitBtn" Height="40" Width="150" Grid.Column="0" HorizontalAlignment="Left" Margin="10" FontWeight="Bold" FontSize="22" Content="Exit" Cursor="Hand" Click="GoToMain" />
         </Grid>
     </Grid>

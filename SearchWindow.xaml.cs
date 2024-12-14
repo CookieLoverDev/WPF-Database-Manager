@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using System.Data;
+using System.Xml.Linq;
 
 namespace Text_Editor
 {
@@ -26,6 +28,7 @@ namespace Text_Editor
         public SearchWindow()
         {
             InitializeComponent();
+            InitialProcess();
         }
 
         private void Search(object sender, RoutedEventArgs e)
@@ -33,7 +36,7 @@ namespace Text_Editor
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = "SELECT Name, Surname, Email, Role, Description FROM info WHERE PersonID = @Id";
+                string query = "SELECT PersonID, Name, Surname, Email, Role, Description FROM info WHERE Id = @Id";
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", searchBox.Text);
@@ -41,12 +44,12 @@ namespace Text_Editor
                     {
                         if (reader.Read())
                         {
-                            idBox.Text = searchBox.Text;
-                            nameBox.Text = reader.GetString(0);
-                            surnameBox.Text = reader.GetString(1);
-                            emailBox.Text = reader.GetString(2);
-                            roleBox.Text = reader.GetString(3);
-                            descriptionBox.Text = reader.GetString(4);
+                            idBox.Text = reader.GetString(0);
+                            nameBox.Text = reader.GetString(1);
+                            surnameBox.Text = reader.GetString(2);
+                            emailBox.Text = reader.GetString(3);
+                            roleBox.Text = reader.GetString(4);
+                            descriptionBox.Text = reader.GetString(5);
                         }
                         else
                         {
@@ -74,7 +77,7 @@ namespace Text_Editor
                     string query = "DELETE FROM info WHERE Id = @Id";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Id", idBox.Text);
+                        command.Parameters.AddWithValue("@Id", searchBox.Text);
                         command.ExecuteNonQuery();
 
                         searchBox.Clear();
@@ -91,11 +94,85 @@ namespace Text_Editor
                 return;
         }
 
+        private void EditPerson(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Welcome to Edit Mode", "Entered Edit Mode", MessageBoxButton.OK, MessageBoxImage.Information);
+            EditPreset();
+        }
+
+        private void SavePerson(object sender, RoutedEventArgs e)
+        {
+            string id = idBox.Text;
+            string name = nameBox.Text;
+            string surname = surnameBox.Text;
+            string email = emailBox.Text;
+            string role = roleBox.Text;
+            string description = descriptionBox.Text;
+
+            if (new[] { id, name, surname, email, role, description }.Any(string.IsNullOrEmpty))
+            {
+                MessageBox.Show("The fields can not be empty", "Ну ты идиот?", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE info SET PersonID = @PersonID, Name = @Name, Surname = @Surname, Email = @Email, Role = @Role WHERE Id = @Id";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", id);
+                    command.Parameters.AddWithValue("@Name", name);
+                    command.Parameters.AddWithValue("@Surname", surname);
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Role", role);
+                    command.Parameters.AddWithValue("@Description", description);
+                    command.Parameters.AddWithValue("@Id", searchBox.Text);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            InitialProcess();
+        }
+
+        private object GetContent()
+        {
+            return EditBtn.Content;
+        }
+
         private void GoToMain(object sender, EventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void EditPreset()
+        {
+            searchBox.IsEnabled = false;
+            EditBtn.IsEnabled = false;
+
+            SaveBtn.IsEnabled = true;
+            idBox.IsEnabled = true;
+            nameBox.IsEnabled = true;
+            surnameBox.IsEnabled = true;
+            emailBox.IsEnabled = true;
+            roleBox.IsEnabled = true;
+            descriptionBox.IsEnabled = true;
+        }
+
+        private void InitialProcess()
+        {
+            searchBox.IsEnabled = true;
+
+            SaveBtn.IsEnabled = false;
+            idBox.IsEnabled = false;
+            nameBox.IsEnabled = false;
+            surnameBox.IsEnabled = false;
+            emailBox.IsEnabled = false;
+            roleBox.IsEnabled = false;
+            descriptionBox.IsEnabled = false;
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Text_Editor
             _role = role.Text;
             _description = description.Text;
 
-            if ((_name == string.Empty) || (_surname == string.Empty) || (_email == string.Empty) || (_role == string.Empty) || (_description == string.Empty))
+            if (new[] {_id, _name, _surname, _email, _role, _description}.Any(string.IsNullOrEmpty))
             {
                 MessageBox.Show("Please, fill out every form", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 
