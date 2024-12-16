@@ -149,7 +149,7 @@ namespace Text_Editor {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Text Editor;component/searchwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Database Manager;component/searchwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\SearchWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

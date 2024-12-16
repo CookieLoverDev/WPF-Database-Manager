@@ -1221,9 +1221,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Victus\\source\\repos\\Text Editor\\Text Editor.csproj",
-      "projectName": "Text Editor",
-      "projectPath": "C:\\Users\\Victus\\source\\repos\\Text Editor\\Text Editor.csproj",
+      "projectUniqueName": "C:\\Users\\Victus\\source\\repos\\Text Editor\\Database Manager.csproj",
+      "projectName": "Database Manager",
+      "projectPath": "C:\\Users\\Victus\\source\\repos\\Text Editor\\Database Manager.csproj",
       "packagesPath": "C:\\Users\\Victus\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Victus\\source\\repos\\Text Editor\\obj\\",
       "projectStyle": "PackageReference",

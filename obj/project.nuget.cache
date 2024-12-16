@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fB+9TMck8tc=",
+  "dgSpecHash": "oC2Gb3fmN0o=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Victus\\source\\repos\\Text Editor\\Text Editor.csproj",
+  "projectFilePath": "C:\\Users\\Victus\\source\\repos\\Text Editor\\Database Manager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Victus\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Victus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
