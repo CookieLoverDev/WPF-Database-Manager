@@ -18,7 +18,14 @@ using System.Xml.Linq;
 namespace Text_Editor
 {
     /// <summary>
-    /// Interaction logic for SearchWindow.xaml
+    /// This is a logic code for the Search Window in the WPF Database Manager
+    /// The code here makes it possible for the user to search, edit and delete the existing records in the database
+    /// There are three main methods that make it possible "Search", "DeletePerson" and "SavePerson"
+    /// Other methods, except the initialization, are supporting methods that help the main logic work correctly and avoid the possible bugs
+    /// 
+    /// Each of the main methods opens connection with the database and creates the query for it, depending on the purpose of the method
+    /// Then they create a command and execute what is needed, for searching it is the reader, for the two others it is straight-forwardly executing the query
+    /// Before so, it adds the needed values to the query with Paramaters function, to avoid unneeded SQL-injection
     /// </summary>
     public partial class SearchWindow : Window
     {
@@ -134,11 +141,6 @@ namespace Text_Editor
             }
 
             InitialProcess();
-        }
-
-        private object GetContent()
-        {
-            return EditBtn.Content;
         }
 
         private void GoToMain(object sender, EventArgs e)

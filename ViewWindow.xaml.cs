@@ -18,16 +18,31 @@ using System.Data.SQLite;
 namespace Text_Editor
 {
     /// <summary>
-    /// Interaction logic for ViewWindow.xaml
+    /// This code is the logic for the view window, which is responsibel for viewing, loading, editing and deleting records 
+    /// There are few methods responsible for the main logic of the View Window: NextPerson, PreviousPerson, SaveEdit, LoadPerson, LoadPage, CalculateTotalPages, CalculateOffset
+    /// 
+    /// The records are divided into pages of ten records to optimize the loading. The load time has O(n) complexity, and if we loaded all the records in one time,
+    /// it could negatively affect the load time, as the number of records get high.
+    /// In the beginning, when the window is opened, we are calculating the total pages number by dividing total rows number in the database by the page size and rounding it to the upper limit
+    /// After it has been calculated, we are loading the page to the list where the indexes of the records are stored
+    /// Inside the page load method, we are calculating the offset(how many rows should be skipped, if we are not in the initial page)
+    /// 
+    /// When we are pressing the controll buttons(Next and Previous) we are changing the current index. Current Index is the position in the list with the Records ID.
+    /// It is made, in case the database is reseted, and the databases ID are weird?
+    /// After the press of the button, the next or previous person of the list loaded by the stored ID there 
+    ///
+    /// When we reach one of the ends in the list, the page is being updated, and depending if previous or next page is loaded, the current ID is set to 10 or 0, respectively
+    /// 
+    /// Save method works like any other one in the other windows
     /// </summary>
     public partial class ViewWindow : Window
     {
-        private string _personID;
-        private string _name;
-        private string _surname;
-        private string _email;
-        private string _role;
-        private string _description;
+        private string _personID = string.Empty;
+        private string _name = string.Empty;
+        private string _surname = string.Empty;
+        private string _email = string.Empty;
+        private string _role = string.Empty;
+        private string _description = string.Empty;
 
         private int _pageSize = 10;
         private int _currentPage = 1;

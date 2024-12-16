@@ -20,19 +20,23 @@ using System.Data.SqlClient;
 namespace Text_Editor
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// This is the logic code for the main window
+    /// It consists of the methods, which are "SaveEntry", two methods for opening View Window and Search Window, "ClearDatabase" and "InitializeDatabase"
+    /// Initialize Database is needed, to create a database in the folder, if it is non-existant
+    /// Save Entry is used for saving the provided record in the database
+    /// Clear Database as the name says, clears all the records in the database, but does not reset it.
     /// </summary>
     public partial class MainWindow : Window
     {
         private const string _dbName = "mainDB.db";
         private const string _connectionString = $"Data Source={_dbName};Version=3;";
 
-        private string _id;
-        private string _name;
-        private string _surname;
-        private string _email;
-        private string _role;
-        private string _description;
+        private string _id = string.Empty;
+        private string _name = string.Empty;
+        private string _surname = string.Empty;
+        private string _email = string.Empty;
+        private string _role = string.Empty;
+        private string _description = string.Empty;
 
         public MainWindow()
         {

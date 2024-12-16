@@ -5,11 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_Editor"
         mc:Ignorable="d"
-        Title="SearchWindow" Height="450" Width="910">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="Media\keke.jpg" />
-        </Grid.Background>
+        Title="SearchWindow" Height="500" Width="910">
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="230" />
